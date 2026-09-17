@@ -1,127 +1,210 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>CONTACT // MY OCEAN</title>
-
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CONTACT // MY OCEAN</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 
-<body class="inner-page">
+<body data-page="CONTACT">
 
-    <div class="cursor"></div>
-    <div class="cursor-dot"></div>
+<div class="loader">
+  <div class="loader-core">
 
-    <div class="ocean-bg">
-        <div class="light-rays"></div>
-        <div class="marine-snow"></div>
-        <div class="deep-fog"></div>
-        <div class="bubble-field"></div>
-        <div class="particle-field"></div>
-        <div class="bioluminescence"></div>
+    <div class="sonar-loader"><i></i></div>
+
+    <b class="loader-symbol">◇</b>
+
+    <div class="loader-title">CONTACT</div>
+
+    <div class="loader-subtitle">
+      ESTABLISHING CONNECTION
     </div>
 
-    <header class="site-header">
+    <div class="loader-progress">
+      <span></span>
+    </div>
 
-        <a href="index.html" class="logo">
-            <span>MY</span>
-            <strong>OCEAN</strong>
-        </a>
+    <div class="loader-readout">
+      <span id="loadPct">000%</span>
+      <span id="loadDepth">DEPTH 0000M</span>
+    </div>
 
-        <nav class="main-nav">
-            <a href="index.html">HOME</a>
-            <a href="profile.html">PROFILE</a>
-            <a href="education.html">EDUCATION</a>
-            <a href="hobbies.html">HOBBIES</a>
-            <a href="contact.html" class="active">CONTACT</a>
-        </nav>
+    <div class="loader-status" id="loadStatus">
+      OPENING CHANNEL...
+    </div>
 
-        <button id="themeButton" class="theme-button">
-            <span></span>
-        </button>
+  </div>
+</div>
 
-    </header>
+<div class="cursor">
+  <div class="cursor-ring"></div>
+  <span>+</span>
+</div>
 
+<div class="click-layer"></div>
 
-    <main class="page-main">
+<div class="ocean-world">
 
-        <section class="page-hero">
+  <div class="sunbeams"></div>
+  <div class="water-light"></div>
+  <div class="deep-fog"></div>
+  <div class="marine-snow"></div>
+  <div class="bubbles"></div>
 
-            <div class="eyebrow">
-                ABYSSAL INTERFACE // 05
-            </div>
+  <div class="life"></div>
+  <div class="large-entity"></div>
 
-            <h1>
-                LET'S
-                <span>CONNECT.</span>
-            </h1>
+  <div class="sonar">
+    <div class="sonar-sweep"></div>
+    <i class="blip b1"></i>
+    <i class="blip b2"></i>
+    <i class="blip b3"></i>
+    <span class="sonar-label">BIO-SONAR / LIVE</span>
+  </div>
 
-            <p>
-                Open a communication channel
-                and send a signal.
-            </p>
+  <div class="tech-grid"></div>
+  <div class="circuits"></div>
 
-        </section>
+</div>
 
+<header>
 
-        <section class="contact-section">
+  <a class="brand" href="index.html">
+    <span>◉</span> MY<span>OCEAN</span>
+  </a>
 
-            <div class="contact-console">
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="profile.html">PROFILE</a>
+    <a href="education.html">EDUCATION</a>
+    <a href="hobby.html">HOBBIES</a>
+    <a class="active" href="contact.html">CONTACT</a>
+  </nav>
 
-                <div class="console-top">
-                    <span>TRANSMISSION CONSOLE</span>
-                    <span>ONLINE</span>
-                </div>
+  <button class="mode" id="themeButton">
+    <span></span>
+  </button>
 
+</header>
 
-                <div class="signal-display">
+<aside class="depth">
 
-                    <div class="signal-ring">
-                        <div class="signal-core"></div>
-                    </div>
+  <small>DEPTH TELEMETRY</small>
 
-                    <span>SIGNAL STRENGTH</span>
+  <strong id="depthValue">0000M</strong>
 
-                    <strong>98%</strong>
+  <div class="depth-track">
+    <i></i>
+  </div>
 
-                </div>
+  <div class="depth-meta">
+    <span>
+      PRESSURE <b id="pressure">1.0</b> ATM
+    </span>
 
+    <span>
+      TEMP <b id="temp">24.0</b>°C
+    </span>
+  </div>
 
-                <div class="contact-data">
+</aside>
 
-                    <div class="contact-item">
-                        <span>EMAIL</span>
-                        <a href="mailto:gamhom181154@gmail.com">
-                            gamhom181154@gmail.com
-                        </a>
-                    </div>
+<main>
 
-                    <div class="contact-item">
-                        <span>PORTFOLIO</span>
-                        <strong>MY OCEAN</strong>
-                    </div>
+<section class="page-head">
 
-                    <div class="contact-item">
-                        <span>SOCIAL SIGNAL</span>
-                        <strong>Supitchaya_Butta</strong>
-                    </div>
+  <p class="eyebrow">
+    TRANSMISSION CONSOLE // 05
+  </p>
 
-                </div>
+  <h1>
+    LET'S <span>CONNECT.</span>
+  </h1>
 
-            </div>
+  <p>
+    Open a channel and send a signal across the abyss.
+  </p>
 
-        </section>
+</section>
 
-    </main>
+<section class="contact-console panel reveal">
 
+  <div class="console-head">
+    <span>● CHANNEL READY</span>
+    <b>SECURE TRANSMISSION</b>
+  </div>
 
-    <footer class="site-footer">
-        <span>CONTACT // MY OCEAN</span>
-        <a href="index.html">← RETURN TO SURFACE</a>
-    </footer>
+  <div class="contact-grid">
+
+    <a
+      class="contact-card tilt"
+      href="mailto:gamhom181154@gmail.com"
+    >
+      <small>EMAIL</small>
+
+      <h2>
+        gamhom181154<br>
+        @gmail.com
+      </h2>
+
+      <span>SEND TRANSMISSION →</span>
+    </a>
+
+    <div class="contact-card tilt">
+
+      <small>PORTFOLIO</small>
+
+      <h2>MY OCEAN</h2>
+
+      <span>ABYSSAL INTERFACE</span>
+
+    </div>
+
+    <div class="contact-card tilt">
+
+      <small>SOCIAL SIGNAL</small>
+
+      <h2>Supitchaya_Butta</h2>
+
+      <span>SIGNAL STRENGTH 98%</span>
+
+    </div>
+
+  </div>
+
+  <div class="signal">
+
+    <div class="signal-wave"></div>
+
+    <div class="bars">
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+    </div>
+
+    <b>98%</b>
+
+  </div>
+
+</section>
+
+<section class="quote panel reveal">
+  READY TO SEND A SIGNAL?
+</section>
+
+</main>
+
+<footer>
+  CONTACT // MY OCEAN
+  <span>● CHANNEL 98%</span>
+</footer>
 
 </body>
 </html>
