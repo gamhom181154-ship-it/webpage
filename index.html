@@ -13617,7 +13617,72 @@ body.surface-mode.deep-level-4 .hero-orb {
      <!-- =======================================================
      PART 3G — FINAL HTML CLOSE
      ======================================================= -->
+<!-- =======================================================
+     EMERGENCY LOADER FIX
+     ======================================================= -->
 
+<script>
+(function () {
+
+    function fixOceanLoader() {
+
+        /* ซ่อน Loader ทุกตัว */
+        document.querySelectorAll(".loader").forEach(function (loader) {
+            loader.classList.add("loaded");
+        });
+
+        /* ให้หน้า HOME แสดงเป็นค่าเริ่มต้น */
+        var pages = document.querySelectorAll(".page");
+
+        if (pages.length) {
+
+            var hash = window.location.hash.replace("#", "");
+
+            var validPages = [
+                "home",
+                "profile",
+                "education",
+                "hobbies",
+                "contact"
+            ];
+
+            if (!validPages.includes(hash)) {
+                hash = "home";
+            }
+
+            pages.forEach(function (page) {
+                page.classList.toggle(
+                    "active-page",
+                    page.id === "page-" + hash
+                );
+            });
+
+            /* Navigation */
+            document.querySelectorAll(".nav-links a").forEach(function (link) {
+
+                link.classList.toggle(
+                    "active",
+                    link.getAttribute("href") === "#" + hash
+                );
+
+            });
+
+        }
+
+    }
+
+    /* ทำทันที */
+    fixOceanLoader();
+
+    /* กันกรณีหน้าโหลดช้า */
+    window.addEventListener("load", function () {
+        setTimeout(fixOceanLoader, 100);
+        setTimeout(fixOceanLoader, 500);
+        setTimeout(fixOceanLoader, 1500);
+    });
+
+})();
+</script>
 </body>
 </html>
 
