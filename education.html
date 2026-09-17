@@ -1,467 +1,188 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>EDUCATION // MY OCEAN</title>
 
-    <link rel="stylesheet"
-          href="style.css">
-
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-
 </head>
 
+<body class="inner-page">
 
-<body class="education-page">
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
 
-
-    <div class="loader" id="loader">
-
-        <div class="loader-ring"></div>
-
-        <div class="loader-content">
-
-            <div class="loader-code">
-                AO-4500
-            </div>
-
-            <div class="loader-title">
-                LOADING EDUCATION DATABASE
-            </div>
-
-            <div class="loader-progress">
-                <span></span>
-            </div>
-
-            <div class="loader-status">
-                SYNCHRONIZING LEARNING RECORDS...
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="cursor-core"></div>
-    <div class="cursor-ring"></div>
-
-
-    <div class="ocean-environment">
-
-        <div class="water-surface"></div>
-
-        <div class="light-shafts">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
-        <div class="underwater-grid"></div>
+    <div class="ocean-bg">
+        <div class="light-rays"></div>
+        <div class="marine-snow"></div>
         <div class="deep-fog"></div>
-
-        <div class="marine-particles"
-             id="marineParticles"></div>
-
-        <div class="bubble-field"
-             id="bubbleField"></div>
-
-        <div class="bioluminescence"
-             id="bioluminescence"></div>
-
-        <div class="marine-life"
-             id="marineLife"></div>
-
-        <div class="coral-field">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
-        <div class="tech-grid"></div>
-        <div class="circuit-layer"></div>
-        <div class="scanline-layer"></div>
-
-        <div class="sonar-system">
-
-            <div class="sonar-ring sonar-ring-1"></div>
-            <div class="sonar-ring sonar-ring-2"></div>
-            <div class="sonar-ring sonar-ring-3"></div>
-
-            <div class="sonar-sweep"></div>
-
-        </div>
-
+        <div class="bubble-field"></div>
+        <div class="particle-field"></div>
+        <div class="bioluminescence"></div>
     </div>
 
+    <header class="site-header">
 
-    <header class="top-hud">
+        <a href="index.html" class="logo">
+            <span>MY</span>
+            <strong>OCEAN</strong>
+        </a>
 
-        <div class="brand-block">
-
-            <div class="brand-symbol">
-                ◉
-            </div>
-
-            <div>
-
-                <div class="brand-title">
-                    MY OCEAN
-                </div>
-
-                <div class="brand-subtitle">
-                    ABYSSAL INTERFACE // 04
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <nav class="main-navigation">
-
-            <a href="index.html"
-               class="nav-link">
-
-                <span>01</span>
-                HOME
-
-            </a>
-
-            <a href="profile.html"
-               class="nav-link">
-
-                <span>02</span>
-                PROFILE
-
-            </a>
-
-            <a href="education.html"
-               class="nav-link active">
-
-                <span>03</span>
-                EDUCATION
-
-            </a>
-
-            <a href="hobbies.html"
-               class="nav-link">
-
-                <span>04</span>
-                HOBBIES
-
-            </a>
-
-            <a href="contact.html"
-               class="nav-link">
-
-                <span>05</span>
-                CONTACT
-
-            </a>
-
+        <nav class="main-nav">
+            <a href="index.html">HOME</a>
+            <a href="profile.html">PROFILE</a>
+            <a href="education.html" class="active">EDUCATION</a>
+            <a href="hobbies.html">HOBBIES</a>
+            <a href="contact.html">CONTACT</a>
         </nav>
 
-
-        <button class="mode-button"
-                id="themeButton">
-
-            <span class="mode-icon">
-                ◐
-            </span>
-
-            <span class="mode-text">
-
-                <small>
-                    ENVIRONMENT
-                </small>
-
-                <strong>
-                    DEEP OCEAN
-                </strong>
-
-            </span>
-
+        <button id="themeButton" class="theme-button">
+            <span></span>
         </button>
 
     </header>
 
 
-    <div class="hud-corner hud-top-left">
+    <main class="page-main">
 
-        <span>
-            SYS.03
-        </span>
-
-        <span>
-            KNOWLEDGE DATABASE
-        </span>
-
-        <span>
-            ONLINE
-        </span>
-
-    </div>
-
-
-    <main class="inner-page">
-
-        <section class="page-hero reveal">
+        <section class="page-hero">
 
             <div class="eyebrow">
-
-                <span></span>
-
-                KNOWLEDGE // LEARNING RECORD
-
+                ABYSSAL INTERFACE // 03
             </div>
 
             <h1>
-
                 MY LEARNING
-                <br>
-
                 <span>JOURNEY.</span>
-
             </h1>
 
             <p>
-
-                Every lesson takes me
-                a little deeper.
-
+                Every lesson is another layer beneath the surface.
             </p>
 
         </section>
 
 
-        <section class="education-layout">
+        <section class="timeline-section">
 
+            <div class="section-heading">
+                <span>EDUCATION LOG</span>
+                <h2>LEARNING TIMELINE</h2>
+            </div>
 
             <div class="timeline">
 
+                <article class="timeline-item">
 
-                <div class="timeline-line"></div>
-
-
-                <article class="timeline-item reveal">
-
-                    <div class="timeline-marker">
-                        01
+                    <div class="timeline-year">
+                        2561—2567
                     </div>
 
+                    <div class="timeline-dot"></div>
+
                     <div class="timeline-content">
-
-                        <span class="timeline-date">
-                            2561 — 2567
-                        </span>
-
-                        <h2>
-                            ประถมศึกษา
-                        </h2>
-
+                        <span>PRIMARY EDUCATION</span>
+                        <h3>ประถมศึกษา</h3>
                         <p>
                             โรงเรียนศรีจอมทอง
                         </p>
-
-                        <div class="timeline-tag">
-                            COMPLETED
-                        </div>
-
                     </div>
 
                 </article>
 
 
-                <article class="timeline-item reveal">
+                <article class="timeline-item">
 
-                    <div class="timeline-marker">
-                        02
+                    <div class="timeline-year">
+                        2567—2568
                     </div>
 
+                    <div class="timeline-dot"></div>
+
                     <div class="timeline-content">
-
-                        <span class="timeline-date">
-                            2567 — 2568
-                        </span>
-
-                        <h2>
-                            มัธยมศึกษาตอนต้น
-                        </h2>
-
+                        <span>LOWER SECONDARY</span>
+                        <h3>มัธยมศึกษาตอนต้น</h3>
                         <p>
                             โรงเรียนจอมทอง
                         </p>
-
-                        <div class="timeline-tag">
-                            COMPLETED
-                        </div>
-
                     </div>
 
                 </article>
 
 
-                <article class="timeline-item current reveal">
+                <article class="timeline-item current">
 
-                    <div class="timeline-marker">
-                        03
+                    <div class="timeline-year">
+                        2569 // CURRENT
                     </div>
 
+                    <div class="timeline-dot"></div>
+
                     <div class="timeline-content">
-
-                        <span class="timeline-date">
-                            2569 // CURRENT
-                        </span>
-
-                        <h2>
-                            มัธยมศึกษาปีที่ 3
-                        </h2>
-
+                        <span>CURRENT LEVEL</span>
+                        <h3>มัธยมศึกษาปีที่ 3</h3>
                         <p>
                             ม.3 / 2
                         </p>
-
-                        <div class="timeline-tag">
-                            CURRENT LEVEL
-                        </div>
-
                     </div>
 
                 </article>
-
-
-            </div>
-
-
-            <div class="education-stats reveal">
-
-
-                <div class="stat-panel">
-
-                    <div class="stat-top">
-
-                        <span>
-                            FAVORITE SUBJECT
-                        </span>
-
-                        <strong>
-                            88%
-                        </strong>
-
-                    </div>
-
-                    <h3>
-                        ภาษาอังกฤษ
-                    </h3>
-
-                    <div class="stat-bar">
-                        <span style="width:88%"></span>
-                    </div>
-
-                </div>
-
-
-                <div class="stat-panel">
-
-                    <div class="stat-top">
-
-                        <span>
-                            CREATIVE SKILL
-                        </span>
-
-                        <strong>
-                            82%
-                        </strong>
-
-                    </div>
-
-                    <h3>
-                        DRAWING
-                    </h3>
-
-                    <div class="stat-bar">
-                        <span style="width:82%"></span>
-                    </div>
-
-                </div>
-
-
-                <div class="stat-panel">
-
-                    <div class="stat-top">
-
-                        <span>
-                            CREATIVE SKILL
-                        </span>
-
-                        <strong>
-                            78%
-                        </strong>
-
-                    </div>
-
-                    <h3>
-                        PAINTING
-                    </h3>
-
-                    <div class="stat-bar">
-                        <span style="width:78%"></span>
-                    </div>
-
-                </div>
-
-
-                <div class="stat-panel future-goal">
-
-                    <div class="stat-top">
-
-                        <span>
-                            FUTURE GOAL
-                        </span>
-
-                        <strong>
-                            90%
-                        </strong>
-
-                    </div>
-
-                    <h3>
-                        TEACHER
-                    </h3>
-
-                    <div class="stat-bar">
-                        <span style="width:90%"></span>
-                    </div>
-
-                </div>
-
 
             </div>
 
         </section>
 
 
-        <section class="quote-section reveal">
+        <section class="stats-section">
 
-            <div class="quote-line"></div>
+            <div class="section-heading">
+                <span>PERSONAL DATA</span>
+                <h2>SKILL & GOALS</h2>
+            </div>
 
-            <blockquote>
-                “Learning is another way
-                of exploring the unknown.”
-            </blockquote>
 
-            <div class="quote-line"></div>
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <span>FAVORITE SUBJECT</span>
+                    <h3>ภาษาอังกฤษ</h3>
+                    <div class="stat-value">88%</div>
+                    <div class="stat-bar">
+                        <i style="width:88%"></i>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <span>CREATIVE SKILL</span>
+                    <h3>DRAWING</h3>
+                    <div class="stat-value">82%</div>
+                    <div class="stat-bar">
+                        <i style="width:82%"></i>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <span>CREATIVE SKILL</span>
+                    <h3>PAINTING</h3>
+                    <div class="stat-value">78%</div>
+                    <div class="stat-bar">
+                        <i style="width:78%"></i>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <span>FUTURE GOAL</span>
+                    <h3>TEACHER</h3>
+                    <div class="stat-value">90%</div>
+                    <div class="stat-bar">
+                        <i style="width:90%"></i>
+                    </div>
+                </div>
+
+            </div>
 
         </section>
 
@@ -469,19 +190,8 @@
 
 
     <footer class="site-footer">
-
-        <div>
-            MY OCEAN // EDUCATION
-        </div>
-
-        <div>
-            LEARNING DATABASE
-        </div>
-
-        <div>
-            © 2026
-        </div>
-
+        <span>EDUCATION // MY OCEAN</span>
+        <a href="index.html">← RETURN TO SURFACE</a>
     </footer>
 
 </body>
