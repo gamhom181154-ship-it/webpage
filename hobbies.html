@@ -1,169 +1,204 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>HOBBIES // MY OCEAN</title>
-
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HOBBIES // MY OCEAN</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 
-<body class="inner-page">
+<body data-page="HOBBIES">
 
-    <div class="cursor"></div>
-    <div class="cursor-dot"></div>
+<div class="loader">
+  <div class="loader-core">
 
-    <div class="ocean-bg">
-        <div class="light-rays"></div>
-        <div class="marine-snow"></div>
-        <div class="deep-fog"></div>
-        <div class="bubble-field"></div>
-        <div class="particle-field"></div>
-        <div class="bioluminescence"></div>
+    <div class="sonar-loader"><i></i></div>
+
+    <b class="loader-symbol">✦</b>
+
+    <div class="loader-title">HOBBIES</div>
+
+    <div class="loader-subtitle">
+      SCANNING INTEREST DATABASE
     </div>
 
-    <header class="site-header">
+    <div class="loader-progress">
+      <span></span>
+    </div>
 
-        <a href="index.html" class="logo">
-            <span>MY</span>
-            <strong>OCEAN</strong>
-        </a>
+    <div class="loader-readout">
+      <span id="loadPct">000%</span>
+      <span id="loadDepth">DEPTH 0000M</span>
+    </div>
 
-        <nav class="main-nav">
-            <a href="index.html">HOME</a>
-            <a href="profile.html">PROFILE</a>
-            <a href="education.html">EDUCATION</a>
-            <a href="hobbies.html" class="active">HOBBIES</a>
-            <a href="contact.html">CONTACT</a>
-        </nav>
+    <div class="loader-status" id="loadStatus">
+      SCANNING SIGNALS...
+    </div>
 
-        <button id="themeButton" class="theme-button">
-            <span></span>
-        </button>
+  </div>
+</div>
 
-    </header>
+<div class="cursor">
+  <div class="cursor-ring"></div>
+  <span>+</span>
+</div>
 
+<div class="click-layer"></div>
 
-    <main class="page-main">
+<div class="ocean-world">
 
-        <section class="page-hero">
+  <div class="sunbeams"></div>
+  <div class="water-light"></div>
+  <div class="deep-fog"></div>
+  <div class="marine-snow"></div>
+  <div class="bubbles"></div>
 
-            <div class="eyebrow">
-                ABYSSAL INTERFACE // 04
-            </div>
+  <div class="life"></div>
+  <div class="large-entity"></div>
 
-            <h1>
-                THINGS
-                <span>I LOVE.</span>
-            </h1>
+  <div class="sonar">
+    <div class="sonar-sweep"></div>
+    <i class="blip b1"></i>
+    <i class="blip b2"></i>
+    <i class="blip b3"></i>
+    <span class="sonar-label">BIO-SONAR / LIVE</span>
+  </div>
 
-            <p>
-                Small interests that make my world brighter.
-            </p>
+  <div class="tech-grid"></div>
+  <div class="circuits"></div>
 
-        </section>
+</div>
 
+<header>
 
-        <section class="hobbies-section">
+  <a class="brand" href="index.html">
+    <span>◉</span> MY<span>OCEAN</span>
+  </a>
 
-            <div class="section-heading">
-                <span>PERSONAL INTERESTS</span>
-                <h2>MY HOBBIES</h2>
-            </div>
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="profile.html">PROFILE</a>
+    <a href="education.html">EDUCATION</a>
+    <a class="active" href="hobby.html">HOBBIES</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
 
+  <button class="mode" id="themeButton">
+    <span></span>
+  </button>
 
-            <div class="hobbies-grid">
+</header>
 
-                <article class="hobby-card tilt-card">
-                    <div class="hobby-number">01</div>
-                    <div class="hobby-icon">⌁</div>
-                    <h3>เกม</h3>
-                    <p>
-                        ชอบเล่นเกมเพื่อความสนุก
-                        และใช้เวลาว่างในการผ่อนคลาย
-                    </p>
-                </article>
+<aside class="depth">
 
+  <small>DEPTH TELEMETRY</small>
 
-                <article class="hobby-card tilt-card">
-                    <div class="hobby-number">02</div>
-                    <div class="hobby-icon">♫</div>
-                    <h3>เพลง</h3>
-                    <p>
-                        ฟังเพลงในเวลาว่าง
-                        และใช้เสียงเพลงช่วยสร้างบรรยากาศ
-                    </p>
-                </article>
+  <strong id="depthValue">0000M</strong>
 
+  <div class="depth-track">
+    <i></i>
+  </div>
 
-                <article class="hobby-card tilt-card">
-                    <div class="hobby-number">03</div>
-                    <div class="hobby-icon">✦</div>
-                    <h3>ศิลปะ</h3>
-                    <p>
-                        สนใจการวาดรูปและการระบายสี
-                        รวมถึงงานสร้างสรรค์ต่าง ๆ
-                    </p>
-                </article>
+  <div class="depth-meta">
+    <span>
+      PRESSURE <b id="pressure">1.0</b> ATM
+    </span>
 
+    <span>
+      TEMP <b id="temp">24.0</b>°C
+    </span>
+  </div>
 
-                <article class="hobby-card tilt-card">
-                    <div class="hobby-number">04</div>
-                    <div class="hobby-icon">▣</div>
-                    <h3>ภาพยนตร์</h3>
-                    <p>
-                        ชอบดูภาพยนตร์
-                        และสนุกกับเรื่องราวและตัวละคร
-                    </p>
-                </article>
+</aside>
 
+<main>
 
-                <article class="hobby-card tilt-card">
-                    <div class="hobby-number">05</div>
-                    <div class="hobby-icon">◇</div>
-                    <h3>นิยาย</h3>
-                    <p>
-                        สนุกกับการอ่านนิยาย
-                        และจินตนาการโลกจากเรื่องราว
-                    </p>
-                </article>
+<section class="page-head">
 
+  <p class="eyebrow">
+    INTEREST SIGNALS // 04
+  </p>
 
-                <article class="hobby-card tilt-card">
-                    <div class="hobby-number">06</div>
-                    <div class="hobby-icon">◎</div>
-                    <h3>การถ่ายภาพ</h3>
-                    <p>
-                        ชอบเก็บช่วงเวลาและสิ่งที่น่าสนใจ
-                        ผ่านภาพถ่าย
-                    </p>
-                </article>
+  <h1>
+    THINGS <span>I LOVE.</span>
+  </h1>
 
-            </div>
+  <p>
+    Small interests can become entire worlds.
+  </p>
 
-        </section>
+</section>
 
+<section class="hobbies">
 
-        <section class="quote-section">
+  <article class="hobby tilt reveal">
+    <b>01</b>
+    <div>🎮</div>
+    <h2>เกม</h2>
+    <p>
+      เพลิดเพลินกับการเล่นเกมและการสำรวจโลกในเกม
+    </p>
+  </article>
 
-            <div class="quote-mark">"</div>
+  <article class="hobby tilt reveal">
+    <b>02</b>
+    <div>♫</div>
+    <h2>เพลง</h2>
+    <p>
+      ฟังเพลงเพื่อผ่อนคลายและสร้างบรรยากาศ
+    </p>
+  </article>
 
-            <blockquote>
-                ความสนใจเล็ก ๆ ในวันนี้
-                อาจกลายเป็นความสามารถที่ยิ่งใหญ่ในอนาคต
-            </blockquote>
+  <article class="hobby tilt reveal">
+    <b>03</b>
+    <div>✦</div>
+    <h2>ศิลปะ</h2>
+    <p>
+      วาดรูปและระบายสีเพื่อสร้างสรรค์จินตนาการ
+    </p>
+  </article>
 
-        </section>
+  <article class="hobby tilt reveal">
+    <b>04</b>
+    <div>◉</div>
+    <h2>ภาพยนตร์</h2>
+    <p>
+      ชอบดูภาพยนตร์และเรื่องราวที่มีโลกน่าสนใจ
+    </p>
+  </article>
 
-    </main>
+  <article class="hobby tilt reveal">
+    <b>05</b>
+    <div>▱</div>
+    <h2>นิยาย</h2>
+    <p>
+      อ่านเรื่องราวและจินตนาการโลกผ่านตัวหนังสือ
+    </p>
+  </article>
 
+  <article class="hobby tilt reveal">
+    <b>06</b>
+    <div>⌾</div>
+    <h2>การถ่ายภาพ</h2>
+    <p>
+      เก็บช่วงเวลาและรายละเอียดที่น่าสนใจผ่านภาพถ่าย
+    </p>
+  </article>
 
-    <footer class="site-footer">
-        <span>HOBBIES // MY OCEAN</span>
-        <a href="index.html">← RETURN TO SURFACE</a>
-    </footer>
+</section>
+
+<section class="quote panel reveal">
+  “ความสนใจเล็ก ๆ ในวันนี้
+  อาจกลายเป็นความสามารถที่ยิ่งใหญ่ในอนาคต”
+</section>
+
+</main>
+
+<footer>
+  HOBBIES // MY OCEAN
+  <span>● SIGNALS FOUND</span>
+</footer>
 
 </body>
 </html>
