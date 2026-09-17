@@ -4764,3 +4764,2496 @@ document.addEventListener(
 
 </body>
 </html>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --cyan: #5cecff;
+  --cyan-bright: #a8f8ff;
+  --blue: #168cff;
+  --deep-blue: #06152c;
+  --bg: #010610;
+  --bg-2: #03101e;
+  --glass: rgba(7, 30, 52, .48);
+  --glass-light: rgba(95, 219, 255, .08);
+  --border: rgba(102, 230, 255, .22);
+  --text: #e9fbff;
+  --muted: #7fa4b7;
+  --shadow: 0 25px 80px rgba(0, 0, 0, .55);
+  --glow: 0 0 35px rgba(92, 236, 255, .18);
+  --max-width: 1300px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(
+      circle at 50% -20%,
+      #0c5274 0%,
+      #03192d 35%,
+      #010610 75%
+    );
+  color: var(--text);
+  font-family: Inter, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: .045;
+  background-image: url(
+    "data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"
+  );
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #010610;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#20cfff, #145bff);
+  border-radius: 20px;
+}
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background:
+    radial-gradient(
+      circle,
+      #073b55,
+      #010610 70%
+    );
+  display: grid;
+  place-items: center;
+  transition:
+    opacity 1s ease,
+    visibility 1s ease;
+}
+
+.loader.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-core {
+  width: min(90vw, 430px);
+  text-align: center;
+  position: relative;
+}
+
+.loader-ring {
+  width: 130px;
+  height: 130px;
+  margin: auto;
+  border: 1px solid rgba(92, 236, 255, .25);
+  border-top-color: var(--cyan);
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+
+.loader-ring::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px dashed rgba(92, 236, 255, .4);
+  border-radius: 50%;
+  animation: spinReverse 3s linear infinite;
+}
+
+.loader-symbol {
+  font-size: 35px;
+  color: var(--cyan);
+  margin-top: -90px;
+  margin-bottom: 65px;
+  text-shadow: 0 0 30px var(--cyan);
+}
+
+.loader-title {
+  font-family: Orbitron, sans-serif;
+  font-size: 22px;
+  letter-spacing: 7px;
+  margin-top: 30px;
+}
+
+.loader-subtitle {
+  font-family: Orbitron, sans-serif;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 3px;
+  margin-top: 15px;
+}
+
+.loader-progress {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, .08);
+  margin-top: 35px;
+  overflow: hidden;
+}
+
+.loader-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--cyan),
+      transparent
+    );
+  animation: loading 1.6s ease-in-out infinite;
+}
+
+.loader-status {
+  font-family: Orbitron, sans-serif;
+  color: var(--cyan);
+  font-size: 8px;
+  letter-spacing: 3px;
+  margin-top: 15px;
+}
+
+@keyframes loading {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinReverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.custom-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(92, 236, 255, .65);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(92, 236, 255, .35);
+  transition: transform .25s ease;
+}
+
+.cursor-coral {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--cyan);
+  font-size: 15px;
+  text-shadow: 0 0 15px var(--cyan);
+}
+
+.cursor-hover .cursor-ring {
+  transform: scale(1.7);
+  border-color: rgba(255, 255, 255, .9);
+}
+
+.ocean-world {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.water-light {
+  position: absolute;
+  top: -25%;
+  left: 50%;
+  width: 1100px;
+  height: 900px;
+  transform: translateX(-50%);
+  background:
+    repeating-conic-gradient(
+      from 180deg,
+      rgba(78, 231, 255, .14) 0deg,
+      transparent 12deg,
+      rgba(78, 231, 255, .05) 24deg,
+      transparent 35deg
+    );
+  filter: blur(18px);
+  opacity: .7;
+  animation: caustics 12s ease-in-out infinite;
+}
+
+@keyframes caustics {
+  0%,
+  100% {
+    transform:
+      translateX(-50%)
+      scale(1)
+      rotate(0);
+  }
+
+  50% {
+    transform:
+      translateX(-50%)
+      scale(1.12)
+      rotate(4deg);
+  }
+}
+
+.underwater-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(
+      rgba(71, 225, 255, .035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(71, 225, 255, .035) 1px,
+      transparent 1px
+    );
+  background-size: 80px 80px;
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black,
+      transparent
+    );
+}
+
+.deep-fog {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse at 50% 10%,
+      transparent 0%,
+      rgba(0, 13, 28, .1) 30%,
+      rgba(0, 3, 12, .72) 100%
+    );
+}
+
+.particles,
+.bubbles,
+.fish-school {
+  position: absolute;
+  inset: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(160, 245, 255, .8);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(92, 236, 255, .7);
+  animation: drift linear infinite;
+}
+
+@keyframes drift {
+  from {
+    transform:
+      translateY(110vh)
+      translateX(0);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: .8;
+  }
+
+  85% {
+    opacity: .8;
+  }
+
+  to {
+    transform:
+      translateY(-10vh)
+      translateX(80px);
+    opacity: 0;
+  }
+}
+
+.bubble {
+  position: absolute;
+  border: 1px solid rgba(150, 240, 255, .25);
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      rgba(255, 255, 255, .28),
+      transparent 30%
+    );
+  animation: bubbleFloat linear infinite;
+}
+
+@keyframes bubbleFloat {
+  from {
+    transform:
+      translateY(110vh)
+      translateX(0)
+      scale(.7);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: .6;
+  }
+
+  80% {
+    opacity: .4;
+  }
+
+  to {
+    transform:
+      translateY(-15vh)
+      translateX(100px)
+      scale(1.2);
+    opacity: 0;
+  }
+}
+
+.fish {
+  position: absolute;
+  font-size: 22px;
+  filter:
+    drop-shadow(
+      0 0 10px
+      rgba(90, 230, 255, .45)
+    );
+  animation: fishSwim linear infinite;
+}
+
+@keyframes fishSwim {
+  0% {
+    transform:
+      translateX(-15vw)
+      translateY(0)
+      scaleX(1);
+  }
+
+  48% {
+    transform:
+      translateX(115vw)
+      translateY(-40px)
+      scaleX(1);
+  }
+
+  50% {
+    transform:
+      translateX(115vw)
+      translateY(-40px)
+      scaleX(-1);
+  }
+
+  98% {
+    transform:
+      translateX(-15vw)
+      translateY(20px)
+      scaleX(-1);
+  }
+
+  100% {
+    transform:
+      translateX(-15vw)
+      translateY(20px)
+      scaleX(1);
+  }
+}
+
+.coral-field {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 190px;
+  opacity: .45;
+}
+
+.coral {
+  position: absolute;
+  bottom: 0;
+  width: 10px;
+  height: 100px;
+  background:
+    linear-gradient(
+      to top,
+      #092f40,
+      #116079
+    );
+  border-radius: 100% 100% 5px 5px;
+  box-shadow:
+    0 0 25px
+    rgba(20, 160, 190, .12);
+}
+
+.coral:before,
+.coral:after {
+  content: "";
+  position: absolute;
+  bottom: 45%;
+  width: 9px;
+  height: 70px;
+  background: inherit;
+  border-radius: 100%;
+}
+
+.coral:before {
+  left: -20px;
+  transform: rotate(-25deg);
+}
+
+.coral:after {
+  right: -20px;
+  transform: rotate(25deg);
+}
+
+.coral-one {
+  left: 7%;
+  height: 130px;
+}
+
+.coral-two {
+  left: 20%;
+  height: 80px;
+}
+
+.coral-three {
+  right: 17%;
+  height: 120px;
+}
+
+.coral-four {
+  right: 6%;
+  height: 90px;
+}
+
+.coral-five {
+  left: 36%;
+  height: 62px;
+  transform: scale(.8);
+}
+
+.coral-six {
+  right: 31%;
+  height: 72px;
+  transform: scale(.72);
+}
+
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 500;
+  padding: 22px 40px;
+  background:
+    linear-gradient(
+      rgba(1, 8, 18, .8),
+      rgba(1, 8, 18, .05)
+    );
+  backdrop-filter: blur(12px);
+}
+
+.navbar {
+  max-width: var(--max-width);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.brand {
+  font-family: Orbitron, sans-serif;
+  font-weight: 800;
+  letter-spacing: 3px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand > span:last-child span {
+  color: var(--cyan);
+}
+
+.brand-symbol {
+  color: var(--cyan);
+  font-size: 22px;
+  text-shadow: 0 0 20px var(--cyan);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.nav-links a {
+  position: relative;
+  padding: 11px 15px;
+  font-family: Orbitron, sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: #7897a7;
+  transition: .3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: white;
+}
+
+.nav-links a:after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  bottom: 3px;
+  height: 1px;
+  background: var(--cyan);
+  transform: scaleX(0);
+  transition: .3s ease;
+  box-shadow: 0 0 10px var(--cyan);
+}
+
+.nav-links a:hover:after,
+.nav-links a.active:after {
+  transform: scaleX(1);
+}
+
+.theme-button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, .04);
+  color: var(--cyan);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: .3s;
+}
+
+<body>
+
+  <div class="page" id="page-home">
+
+    <div class="loader">
+      <div class="loader-core">
+
+        <div class="loader-ring">
+        </div>
+
+        <div class="loader-symbol">◈</div>
+
+        <div class="loader-title">
+          MY OCEAN
+        </div>
+
+        <div class="loader-subtitle">
+          INITIALIZING ABYSSAL INTERFACE
+        </div>
+
+        <div class="loader-progress">
+          <span>
+          </span>
+        </div>
+
+        <div class="loader-status">
+          SYSTEM ONLINE
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="custom-cursor">
+      <div class="cursor-ring">
+      </div>
+
+      <div class="cursor-coral">
+        ✦
+      </div>
+    </div>
+
+
+    <div class="ocean-world">
+
+      <div class="water-light">
+      </div>
+
+      <div class="underwater-grid">
+      </div>
+
+      <div class="deep-fog">
+      </div>
+
+      <div class="particles">
+      </div>
+
+      <div class="bubbles">
+      </div>
+
+      <div class="fish-school">
+      </div>
+
+      <div class="coral-field">
+
+        <div class="coral coral-one">
+        </div>
+
+        <div class="coral coral-two">
+        </div>
+
+        <div class="coral coral-three">
+        </div>
+
+        <div class="coral coral-four">
+        </div>
+
+        <div class="coral coral-five">
+        </div>
+
+        <div class="coral coral-six">
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="hud hud-top-left">
+      <span>
+        OCEAN.OS
+      </span>
+
+      <small>
+        EXPEDITION 026
+      </small>
+    </div>
+
+
+    <div class="hud hud-top-right">
+      <span class="live-dot">
+      </span>
+
+      LIVE
+    </div>
+
+
+    <header class="main-header">
+
+      <nav class="navbar">
+
+        <a href="#home" class="brand">
+
+          <span class="brand-symbol">
+            ◈
+          </span>
+
+          <span>
+            MY<span>OCEAN</span>
+          </span>
+
+        </a>
+
+
+        <div class="nav-links">
+
+          <a href="#home" class="active">
+            HOME
+          </a>
+
+          <a href="#profile" class="">
+            PROFILE
+          </a>
+
+          <a href="#education" class="">
+            EDUCATION
+          </a>
+
+          <a href="#hobbies" class="">
+            HOBBIES
+          </a>
+
+          <a href="#contact" class="">
+            CONTACT
+          </a>
+
+        </div>
+
+
+        <button
+          class="theme-button"
+          id="themeButton"
+        >
+          ◐
+        </button>
+
+      </nav>
+
+    </header>
+
+
+    <aside class="depth-panel">
+
+      <div class="depth-label">
+        DEPTH
+      </div>
+
+      <div class="depth-number">
+
+        <span id="depthNumber">
+          0
+        </span>
+
+        <small>
+          M
+        </small>
+
+      </div>
+
+      <div class="depth-line">
+
+        <span id="depthFill">
+        </span>
+
+      </div>
+
+      <div class="depth-range">
+        SURFACE
+        <span>
+          4500M
+        </span>
+      </div>
+
+    </aside>
+
+
+    <main>
+
+      <section class="hero">
+
+        <div class="hero-content">
+
+          <div class="system-tag">
+
+            <span>
+            </span>
+
+            DEEP SEA PERSONAL SYSTEM
+
+          </div>
+
+
+          <p class="hero-index">
+            001 / DISCOVER
+          </p>
+
+
+          <h1>
+            WELCOME
+            <br>
+            TO MY
+            <span>
+              OCEAN.
+            </span>
+          </h1>
+
+
+          <p class="hero-description">
+            Dive deeper than the surface.
+            Discover my story, my education,
+            my passions and the little things
+            that make my world unique.
+          </p>
+
+
+          <div class="hero-buttons">
+
+            <a
+              href="#profile"
+              class="btn btn-primary"
+            >
+              ENTER MY WORLD
+              <span>
+                →
+              </span>
+            </a>
+
+
+            <a
+              href="#explore"
+              class="btn btn-ghost"
+            >
+              EXPLORE DEPTH
+            </a>
+
+          </div>
+
+
+          <div class="hero-data">
+
+            <div>
+
+              <small>
+                STATUS
+              </small>
+
+              <strong>
+                EXPLORING
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <small>
+                LOCATION
+              </small>
+
+              <strong>
+                THAILAND
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <small>
+                MISSION
+              </small>
+
+              <strong>
+                LEARN / CREATE
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="hero-orb">
+
+          <div class="orb-ring orb-ring-one">
+          </div>
+
+          <div class="orb-ring orb-ring-two">
+          </div>
+
+          <div class="orb-core">
+
+            <div class="orb-light">
+            </div>
+
+          </div>
+
+          <div class="orb-label">
+            OCEAN
+            <br>
+            CORE
+          </div>
+
+        </div>
+
+
+        <div class="scroll-indicator">
+
+          <span>
+            SCROLL TO DIVE
+          </span>
+
+          <div class="scroll-line">
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section
+        class="section explore-section"
+        id="explore"
+      >
+
+        <div class="section-heading reveal">
+
+          <div>
+
+            <span class="section-number">
+              002
+            </span>
+
+            <span class="section-kicker">
+              SYSTEM MODULES
+            </span>
+
+          </div>
+
+
+          <h2>
+            EXPLORE
+            <span>
+              MY WORLD
+            </span>
+          </h2>
+
+
+          <p>
+            Every layer reveals something different.
+          </p>
+
+        </div>
+
+
+        <div class="module-grid">
+
+
+          <a
+            href="#profile"
+            class="module-card tilt-card reveal"
+          >
+
+            <div class="module-number">
+              01
+            </div>
+
+            <div class="module-icon">
+              ◉
+            </div>
+
+            <h3>
+              PROFILE
+            </h3>
+
+            <p>
+              Get to know the person behind this ocean.
+            </p>
+
+            <span class="module-arrow">
+              ENTER →
+            </span>
+
+          </a>
+
+
+          <a
+            href="#education"
+            class="module-card tilt-card reveal"
+          >
+
+            <div class="module-number">
+              02
+            </div>
+
+            <div class="module-icon">
+              △
+            </div>
+
+            <h3>
+              EDUCATION
+            </h3>
+
+            <p>
+              Explore my learning journey and future goals.
+            </p>
+
+            <span class="module-arrow">
+              ENTER →
+            </span>
+
+          </a>
+
+
+          <a
+            href="#hobbies"
+            class="module-card tilt-card reveal"
+          >
+
+            <div class="module-number">
+              03
+            </div>
+
+            <div class="module-icon">
+              ✦
+            </div>
+
+            <h3>
+              HOBBIES
+            </h3>
+
+            <p>
+              Discover the things I enjoy doing.
+            </p>
+
+            <span class="module-arrow">
+              ENTER →
+            </span>
+
+          </a>
+
+
+          <a
+            href="#contact"
+            class="module-card tilt-card reveal"
+          >
+
+            <div class="module-number">
+              04
+            </div>
+
+            <div class="module-icon">
+              ◇
+            </div>
+
+            <h3>
+              CONTACT
+            </h3>
+
+            <p>
+              Establish a connection with my world.
+            </p>
+
+            <span class="module-arrow">
+              ENTER →
+            </span>
+
+          </a>
+
+
+        </div>
+
+      </section>
+
+
+      <section class="quote-section">
+
+        <div class="quote-orbit">
+        </div>
+
+
+        <div class="quote-content reveal">
+
+          <span>
+            DEPTH NOTE // 04
+          </span>
+
+          <h2>
+            “The deeper you dive,
+            the more you discover.”
+          </h2>
+
+          <p>
+            — MY OCEAN
+          </p>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+      <div class="footer-main">
+
+        <div>
+
+          <div class="footer-brand">
+            ◈ MY OCEAN
+          </div>
+
+          <p>
+            Student Portfolio
+            <br>
+            Exploring my world, one wave at a time.
+          </p>
+
+        </div>
+
+
+        <div class="footer-status">
+
+          <span class="live-dot">
+          </span>
+
+          OCEAN SYSTEM ONLINE
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © 2026 MY OCEAN
+        </span>
+
+        <span>
+          BUILT BELOW THE SURFACE
+        </span>
+
+      </div>
+
+    </footer>
+
+  </div>
+
+
+
+  <div class="page" id="page-profile">
+
+    <div class="loader">
+
+      <div class="loader-core">
+
+        <div class="loader-ring">
+        </div>
+
+        <div class="loader-symbol">
+          ◈
+        </div>
+
+        <div class="loader-title">
+          PROFILE
+        </div>
+
+        <div class="loader-subtitle">
+          LOADING PERSONAL DATA
+        </div>
+
+        <div class="loader-progress">
+          <span>
+          </span>
+        </div>
+
+        <div class="loader-status">
+          ACCESS GRANTED
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="custom-cursor">
+
+      <div class="cursor-ring">
+      </div>
+
+      <div class="cursor-coral">
+        ✦
+      </div>
+
+    </div>
+
+
+    <div class="ocean-world">
+
+      <div class="water-light">
+      </div>
+
+      <div class="underwater-grid">
+      </div>
+
+      <div class="deep-fog">
+      </div>
+
+      <div class="particles">
+      </div>
+
+      <div class="bubbles">
+      </div>
+
+      <div class="fish-school">
+      </div>
+
+      <div class="coral-field">
+
+        <div class="coral coral-one">
+        </div>
+
+        <div class="coral coral-two">
+        </div>
+
+        <div class="coral coral-three">
+        </div>
+
+        <div class="coral coral-five">
+        </div>
+
+        <div class="coral coral-six">
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <header class="main-header">
+
+      <nav class="navbar">
+
+        <a
+          href="#home"
+          class="brand"
+        >
+
+          <span class="brand-symbol">
+            ◈
+          </span>
+
+          <span>
+            MY<span>OCEAN</span>
+          </span>
+
+        </a>
+
+
+        <div class="nav-links">
+
+          <a href="#home" class="">
+            HOME
+          </a>
+
+          <a href="#profile" class="active">
+            PROFILE
+          </a>
+
+          <a href="#education" class="">
+            EDUCATION
+          </a>
+
+          <a href="#hobbies" class="">
+            HOBBIES
+          </a>
+
+          <a href="#contact" class="">
+            CONTACT
+          </a>
+
+        </div>
+
+
+        <button
+          class="theme-button"
+          id="themeButton"
+        >
+          ◐
+        </button>
+
+      </nav>
+
+    </header>
+
+
+    <aside class="depth-panel">
+
+      <div class="depth-label">
+        DEPTH
+      </div>
+
+      <div class="depth-number">
+
+        <span id="depthNumber">
+          0
+        </span>
+
+        <small>
+          M
+        </small>
+
+      </div>
+
+      <div class="depth-line">
+
+        <span id="depthFill">
+        </span>
+
+      </div>
+
+      <div class="depth-range">
+
+        SURFACE
+
+        <span>
+          4500M
+        </span>
+
+      </div>
+
+    </aside>
+
+
+    <main>
+
+      <section class="page-hero">
+
+        <div class="system-tag">
+
+          <span>
+          </span>
+
+          PERSONAL DATABASE
+
+        </div>
+
+
+        <p class="hero-index">
+          001 / ABOUT ME
+        </p>
+
+
+        <h1>
+          GET TO
+          <span>
+            KNOW ME.
+          </span>
+        </h1>
+
+
+        <p>
+          Every person is an ocean.
+          This is a small map of mine.
+        </p>
+
+      </section>
+
+
+      <section class="profile-section section">
+
+        <div class="profile-image-card reveal">
+
+          <div class="scan-line">
+          </div>
+
+
+          <div class="image-frame">
+
+            <img
+              src="images/GamRed.jpeg"
+              alt="Profile image"
+            >
+
+            <div class="image-overlay">
+              IDENTITY VERIFIED
+            </div>
+
+          </div>
+
+
+          <div class="profile-caption">
+
+            <span>
+              SUBJECT / 001
+            </span>
+
+            <strong>
+              M.3 STUDENT
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="profile-info reveal">
+
+          <span class="section-kicker">
+            HELLO THERE
+          </span>
+
+
+          <h2>
+            สวัสดี ฉันชื่อ
+            <span>
+              สุพิชญา บุตรต๊ะ
+            </span>
+          </h2>
+
+
+          <div class="real-name">
+            Supitchaya Butta
+          </div>
+
+
+          <p class="lead">
+            ฉันเป็นนักเรียนชั้นมัธยมศึกษาปีที่ 3
+            ที่ชอบเรียนรู้สิ่งใหม่ ๆ
+            และกำลังค้นหาสิ่งที่ตัวเองสนใจ
+          </p>
+
+
+          <div class="info-grid">
+
+            <div class="info-box">
+
+              <small>
+                NICKNAME
+              </small>
+
+              <strong>
+                แก้มหอม
+              </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+              <small>
+                AGE
+              </small>
+
+              <strong>
+                14 YEARS
+              </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+              <small>
+                BIRTHDAY
+              </small>
+
+              <strong>
+                18 NOV 2011
+              </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+              <small>
+                LOCATION
+              </small>
+
+              <strong>
+                CHIANG MAI
+              </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+              <small>
+                SCHOOL
+              </small>
+
+              <strong>
+                CHOMTHONG
+              </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+              <small>
+                LEVEL
+              </small>
+
+              <strong>
+                M.3 / 2
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section class="section about-panel">
+
+        <div class="large-panel reveal">
+
+          <div class="panel-index">
+            02
+          </div>
+
+
+          <div>
+
+            <span class="section-kicker">
+              A LITTLE ABOUT ME
+            </span>
+
+
+            <h2>
+              MY INNER
+              <span>
+                OCEAN
+              </span>
+            </h2>
+
+
+            <p>
+              ฉันเป็นคนที่สนใจในเรื่องของ
+              งานศิลปะและทัศนศิลป์
+              และในเวลาว่างมักจะ
+              วาดภาพระบายสี
+            </p>
+
+
+            <p>
+              ฉันเชื่อว่าการเรียนรู้ไม่ได้เกิดขึ้น
+              เฉพาะในห้องเรียน
+              แต่เกิดขึ้นจากประสบการณ์
+              และสิ่งต่าง ๆ รอบตัวเรา
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+      <div class="footer-main">
+
+        <div>
+
+          <div class="footer-brand">
+            ◈ MY OCEAN
+          </div>
+
+          <p>
+            Student Portfolio
+            <br>
+            Exploring my world, one wave at a time.
+          </p>
+
+        </div>
+
+
+        <div class="footer-status">
+
+          <span class="live-dot">
+          </span>
+
+          SYSTEM ONLINE
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © 2026 MY OCEAN
+        </span>
+
+        <span>
+          PROFILE DATABASE
+        </span>
+
+      </div>
+
+    </footer>
+
+  </div>
+
+
+
+  <div class="page" id="page-education">
+
+    <div class="loader">
+
+      <div class="loader-core">
+
+        <div class="loader-ring">
+        </div>
+
+        <div class="loader-symbol">
+          △
+        </div>
+
+        <div class="loader-title">
+          EDUCATION
+        </div>
+
+        <div class="loader-subtitle">
+          MAPPING LEARNING JOURNEY
+        </div>
+
+        <div class="loader-progress">
+          <span>
+          </span>
+        </div>
+
+        <div class="loader-status">
+          DATABASE READY
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="custom-cursor">
+
+      <div class="cursor-ring">
+      </div>
+
+      <div class="cursor-coral">
+        ✦
+      </div>
+
+    </div>
+
+
+    <div class="ocean-world">
+
+      <div class="water-light">
+      </div>
+
+      <div class="underwater-grid">
+      </div>
+
+      <div class="deep-fog">
+      </div>
+
+      <div class="particles">
+      </div>
+
+      <div class="bubbles">
+      </div>
+
+      <div class="fish-school">
+      </div>
+
+      <div class="coral-field">
+
+        <div class="coral coral-one">
+        </div>
+
+        <div class="coral coral-two">
+        </div>
+
+        <div class="coral coral-three">
+        </div>
+
+        <div class="coral coral-five">
+        </div>
+
+        <div class="coral coral-six">
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <header class="main-header">
+
+      <nav class="navbar">
+
+        <a
+          href="#home"
+          class="brand"
+        >
+
+          <span class="brand-symbol">
+            ◈
+          </span>
+
+          <span>
+            MY<span>OCEAN</span>
+          </span>
+
+        </a>
+
+
+        <div class="nav-links">
+
+          <a href="#home" class="">
+            HOME
+          </a>
+
+          <a href="#profile" class="">
+            PROFILE
+          </a>
+
+          <a href="#education" class="active">
+            EDUCATION
+          </a>
+
+          <a href="#hobbies" class="">
+            HOBBIES
+          </a>
+
+          <a href="#contact" class="">
+            CONTACT
+          </a>
+
+        </div>
+
+
+        <button
+          class="theme-button"
+          id="themeButton"
+        >
+          ◐
+        </button>
+
+      </nav>
+
+    </header>
+
+
+    <aside class="depth-panel">
+
+      <div class="depth-label">
+        DEPTH
+      </div>
+
+      <div class="depth-number">
+
+        <span id="depthNumber">
+          0
+        </span>
+
+        <small>
+          M
+        </small>
+
+      </div>
+
+
+      <div class="depth-line">
+
+        <span id="depthFill">
+        </span>
+
+      </div>
+
+
+      <div class="depth-range">
+
+        SURFACE
+
+        <span>
+          4500M
+        </span>
+
+      </div>
+
+    </aside>
+
+
+    <main>
+
+      <section class="page-hero">
+
+        <div class="system-tag">
+
+          <span>
+          </span>
+
+          KNOWLEDGE ARCHIVE
+
+        </div>
+
+
+        <p class="hero-index">
+          002 / LEARNING JOURNEY
+        </p>
+
+
+        <h1>
+          MY
+          <span>
+            EDUCATION.
+          </span>
+        </h1>
+
+
+        <p>
+          Every lesson is another layer beneath the surface.
+        </p>
+
+      </section>
+.theme-button:hover {
+  transform: rotate(180deg) scale(1.1);
+  box-shadow:
+    0 0 25px
+    rgba(92, 236, 255, .25);
+}
+
+      <section class="section education-section">
+
+        <div class="timeline">
+
+          <div class="timeline-line">
+          </div>
+
+
+          <div class="timeline-item reveal">
+
+            <div class="timeline-dot">
+            </div>
+
+            <div class="timeline-year">
+              2561–2567
+            </div>
+
+            <div class="timeline-card">
+
+              <span>
+                ELEMENTARY SCHOOL
+              </span>
+
+              <h3>
+                ป.1 - ป.6
+              </h3>
+
+              <p>
+                ศึกษาและจบการศึกษาในระดับชั้นประถมศึกษา
+                ณ โรงเรียนศรีจอมทอง
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="timeline-item reveal">
+
+            <div class="timeline-dot">
+            </div>
+
+            <div class="timeline-year">
+              2567–2568
+            </div>
+
+            <div class="timeline-card">
+
+              <span>
+                SECONDARY SCHOOL
+              </span>
+
+              <h3>
+                ม.1 - ม.2
+              </h3>
+
+              <p>
+                ศึกษาอยู่ในระดับชั้นมัธยมศึกษาตอนต้น
+                ณ โรงเรียนจอมทอง
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="timeline-item active reveal">
+
+            <div class="timeline-dot">
+            </div>
+
+            <div class="timeline-year">
+              2569 // CURRENT
+            </div>
+
+            <div class="timeline-card">
+
+              <span>
+                CURRENT LEVEL
+              </span>
+
+              <h3>
+                ม.3
+              </h3>
+
+              <p>
+                ศึกษาและกำลังจะจบการศึกษา
+                ในระดับชั้นมัธยมศึกษาตอนต้น
+              </p>
+
+              <div class="current-badge">
+                CURRENT
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section class="section future-section">
+
+        <div class="future-panel reveal">
+
+          <div class="panel-index">
+            03
+          </div>
+
+          <div>
+
+            <span class="section-kicker">
+              NEXT DESTINATION
+            </span>
+
+            <h2>
+              THE JOURNEY
+              <span>
+                CONTINUES.
+              </span>
+            </h2>
+
+            <p>
+              การศึกษาเป็นเหมือนการดำน้ำลงไป
+              ในมหาสมุทรที่ไม่มีที่สิ้นสุด
+              ยิ่งเรียนรู้มากเท่าไร
+              ก็ยิ่งค้นพบสิ่งใหม่มากขึ้นเท่านั้น
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+      <div class="footer-main">
+
+        <div>
+
+          <div class="footer-brand">
+            ◈ MY OCEAN
+          </div>
+
+          <p>
+            Student Portfolio
+            <br>
+            Exploring my world, one wave at a time.
+          </p>
+
+        </div>
+
+        <div class="footer-status">
+
+          <span class="live-dot">
+          </span>
+
+          SYSTEM ONLINE
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © 2026 MY OCEAN
+        </span>
+
+        <span>
+          EDUCATION DATABASE
+        </span>
+
+      </div>
+
+    </footer>
+
+  </div>
+
+
+
+  <div class="page" id="page-hobbies">
+
+    <div class="loader">
+
+      <div class="loader-core">
+
+        <div class="loader-ring">
+        </div>
+
+        <div class="loader-symbol">
+          ✦
+        </div>
+
+        <div class="loader-title">
+          HOBBIES
+        </div>
+
+        <div class="loader-subtitle">
+          SCANNING PERSONAL INTERESTS
+        </div>
+
+        <div class="loader-progress">
+          <span>
+          </span>
+        </div>
+
+        <div class="loader-status">
+          SIGNAL FOUND
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="custom-cursor">
+
+      <div class="cursor-ring">
+      </div>
+
+      <div class="cursor-coral">
+        ✦
+      </div>
+
+    </div>
+
+
+    <div class="ocean-world">
+
+      <div class="water-light">
+      </div>
+
+      <div class="underwater-grid">
+      </div>
+
+      <div class="deep-fog">
+      </div>
+
+      <div class="particles">
+      </div>
+
+      <div class="bubbles">
+      </div>
+
+      <div class="fish-school">
+      </div>
+
+      <div class="coral-field">
+
+        <div class="coral coral-one">
+        </div>
+
+        <div class="coral coral-two">
+        </div>
+
+        <div class="coral coral-three">
+        </div>
+
+        <div class="coral coral-five">
+        </div>
+
+        <div class="coral coral-six">
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <header class="main-header">
+
+      <nav class="navbar">
+
+        <a
+          href="#home"
+          class="brand"
+        >
+
+          <span class="brand-symbol">
+            ◈
+          </span>
+
+          <span>
+            MY<span>OCEAN</span>
+          </span>
+
+        </a>
+
+
+        <div class="nav-links">
+
+          <a href="#home" class="">
+            HOME
+          </a>
+
+          <a href="#profile" class="">
+            PROFILE
+          </a>
+
+          <a href="#education" class="">
+            EDUCATION
+          </a>
+
+          <a href="#hobbies" class="active">
+            HOBBIES
+          </a>
+
+          <a href="#contact" class="">
+            CONTACT
+          </a>
+
+        </div>
+
+
+        <button
+          class="theme-button"
+          id="themeButton"
+        >
+          ◐
+        </button>
+
+      </nav>
+
+    </header>
+
+
+    <aside class="depth-panel">
+
+      <div class="depth-label">
+        DEPTH
+      </div>
+
+      <div class="depth-number">
+
+        <span id="depthNumber">
+          0
+        </span>
+
+        <small>
+          M
+        </small>
+
+      </div>
+
+      <div class="depth-line">
+
+        <span id="depthFill">
+        </span>
+
+      </div>
+
+      <div class="depth-range">
+
+        SURFACE
+
+        <span>
+          4500M
+        </span>
+
+      </div>
+
+    </aside>
+
+
+    <main>
+
+      <section class="page-hero">
+
+        <div class="system-tag">
+
+          <span>
+          </span>
+
+          PERSONAL INTEREST DATABASE
+
+        </div>
+
+
+        <p class="hero-index">
+          003 / HOBBIES
+        </p>
+
+
+        <h1>
+          THINGS I
+          <span>
+            LOVE.
+          </span>
+        </h1>
+
+
+        <p>
+          Small things that make my world brighter.
+        </p>
+
+      </section>
+
+
+      <section class="section hobbies-section">
+
+        <div class="hobbies-grid">
+
+
+          <div class="hobby-card tilt-card reveal">
+
+            <div class="hobby-number">
+              01
+            </div>
+
+            <div class="hobby-icon">
+              🎨
+            </div>
+
+            <span>
+              CREATIVE MODE
+            </span>
+
+            <h2>
+              DRAWING
+            </h2>
+
+            <p>
+              ชอบวาดรูปและสร้างสรรค์ผลงาน
+              ผ่านจินตนาการของตัวเอง
+            </p>
+
+            <div class="hobby-line">
+            </div>
+
+          </div>
+
+
+          <div class="hobby-card tilt-card reveal">
+
+            <div class="hobby-number">
+              02
+            </div>
+
+            <div class="hobby-icon">
+              🎧
+            </div>
+
+            <span>
+              AUDIO MODE
+            </span>
+
+            <h2>
+              MUSIC
+            </h2>
+
+            <p>
+              ฟังเพลงในช่วงเวลาว่าง
+              เพื่อพักผ่อนและสร้างแรงบันดาลใจ
+            </p>
+
+            <div class="hobby-line">
+            </div>
+
+          </div>
+
+
+          <div class="hobby-card tilt-card reveal">
+
+            <div class="hobby-number">
+              03
+            </div>
+
+            <div class="hobby-icon">
+              📱
+            </div>
+
+            <span>
+              DIGITAL MODE
+            </span>
+
+            <h2>
+              SOCIAL MEDIA
+            </h2>
+
+            <p>
+              ใช้โซเชียลมีเดียเพื่อดูคอนเทนต์
+              และติดตามสิ่งที่สนใจ
+            </p>
+
+            <div class="hobby-line">
+            </div>
+
+          </div>
+
+
+          <div class="hobby-card tilt-card reveal">
+
+            <div class="hobby-number">
+              04
+            </div>
+
+            <div class="hobby-icon">
+              🌊
+            </div>
+
+            <span>
+              EXPLORATION MODE
+            </span>
+
+            <h2>
+              EXPLORING
+            </h2>
+
+            <p>
+              สนใจการค้นหาสิ่งใหม่ ๆ
+              และเปิดประสบการณ์ใหม่ให้กับตัวเอง
+            </p>
+
+            <div class="hobby-line">
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+      <section class="section hobby-note">
+
+        <div class="large-panel reveal">
+
+          <div class="panel-index">
+            04
+          </div>
+
+          <div>
+
+            <span class="section-kicker">
+              PERSONAL NOTE
+            </span>
+
+            <h2>
+              FINDING
+              <span>
+                MY FLOW.
+              </span>
+            </h2>
+
+            <p>
+              งานอดิเรกเล็ก ๆ เหล่านี้
+              ช่วยให้ฉันได้ผ่อนคลาย
+              และได้เป็นตัวของตัวเอง
+              ในแบบที่ชอบ
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+      <div class="footer-main">
+
+        <div>
+
+          <div class="footer-brand">
+            ◈ MY OCEAN
+          </div>
+
+          <p>
+            Student Portfolio
+            <br>
+            Exploring my world, one wave at a time.
+          </p>
+
+        </div>
+
+
+        <div class="footer-status">
+
+          <span class="live-dot">
+          </span>
+
+          SYSTEM ONLINE
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © 2026 MY OCEAN
+        </span>
+
+        <span>
+          HOBBIES DATABASE
+        </span>
+
+      </div>
+
+    </footer>
+
+  </div>
