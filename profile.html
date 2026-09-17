@@ -1,177 +1,227 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>PROFILE // MY OCEAN</title>
-
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PROFILE // MY OCEAN</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 
-<body class="inner-page">
+<body data-page="PROFILE">
 
-    <div class="cursor"></div>
-    <div class="cursor-dot"></div>
+<div class="loader">
+  <div class="loader-core">
 
-    <div class="ocean-bg">
-        <div class="light-rays"></div>
-        <div class="marine-snow"></div>
-        <div class="deep-fog"></div>
-        <div class="bubble-field"></div>
-        <div class="particle-field"></div>
-        <div class="bioluminescence"></div>
+    <div class="sonar-loader"><i></i></div>
+
+    <b class="loader-symbol">◈</b>
+
+    <div class="loader-title">PROFILE</div>
+
+    <div class="loader-subtitle">
+      LOADING PERSONAL DATA
     </div>
 
-    <header class="site-header">
+    <div class="loader-progress">
+      <span></span>
+    </div>
 
-        <a href="index.html" class="logo">
-            <span>MY</span>
-            <strong>OCEAN</strong>
-        </a>
+    <div class="loader-readout">
+      <span id="loadPct">000%</span>
+      <span id="loadDepth">DEPTH 0000M</span>
+    </div>
 
-        <nav class="main-nav">
-            <a href="index.html">HOME</a>
-            <a href="profile.html" class="active">PROFILE</a>
-            <a href="education.html">EDUCATION</a>
-            <a href="hobbies.html">HOBBIES</a>
-            <a href="contact.html">CONTACT</a>
-        </nav>
+    <div class="loader-status" id="loadStatus">
+      ACCESSING BIODATA...
+    </div>
 
-        <button id="themeButton" class="theme-button">
-            <span></span>
-        </button>
+  </div>
+</div>
 
-    </header>
+<div class="cursor">
+  <div class="cursor-ring"></div>
+  <span>+</span>
+</div>
 
+<div class="click-layer"></div>
 
-    <main class="page-main">
+<div class="ocean-world">
 
-        <section class="page-hero">
+  <div class="sunbeams"></div>
+  <div class="water-light"></div>
+  <div class="deep-fog"></div>
+  <div class="marine-snow"></div>
+  <div class="bubbles"></div>
 
-            <div class="eyebrow">
-                ABYSSAL INTERFACE // 02
-            </div>
+  <div class="life"></div>
+  <div class="large-entity"></div>
 
-            <h1>
-                GET TO
-                <span>KNOW ME.</span>
-            </h1>
+  <div class="sonar">
+    <div class="sonar-sweep"></div>
+    <i class="blip b1"></i>
+    <i class="blip b2"></i>
+    <i class="blip b3"></i>
+    <span class="sonar-label">BIO-SONAR / LIVE</span>
+  </div>
 
-            <p>
-                A small profile from beneath the surface.
-            </p>
+  <div class="tech-grid"></div>
+  <div class="circuits"></div>
 
-        </section>
+</div>
 
+<header>
 
-        <section class="profile-section">
+  <a class="brand" href="index.html">
+    <span>◉</span> MY<span>OCEAN</span>
+  </a>
 
-            <div class="profile-image-card tilt-card">
+  <nav>
+    <a href="index.html">HOME</a>
+    <a class="active" href="profile.html">PROFILE</a>
+    <a href="education.html">EDUCATION</a>
+    <a href="hobby.html">HOBBIES</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
 
-                <div class="scan-line"></div>
+  <button class="mode" id="themeButton">
+    <span></span>
+  </button>
 
-                <img
-                    src="images/GamRed.jpeg"
-                    alt="GamHom"
-                >
+</header>
 
-                <div class="image-label">
-                    <span>SUBJECT</span>
-                    <strong>GAMHOM</strong>
-                </div>
+<aside class="depth">
 
-            </div>
+  <small>DEPTH TELEMETRY</small>
 
+  <strong id="depthValue">0000M</strong>
 
-            <div class="profile-info">
+  <div class="depth-track">
+    <i></i>
+  </div>
 
-                <div class="status-label">
-                    M.3 STUDENT
-                </div>
+  <div class="depth-meta">
+    <span>
+      PRESSURE <b id="pressure">1.0</b> ATM
+    </span>
 
-                <h2>
-                    สุพิชญา บุตรต๊ะ
-                </h2>
+    <span>
+      TEMP <b id="temp">24.0</b>°C
+    </span>
+  </div>
 
-                <p class="nickname">
-                    GAMHOM
-                </p>
+</aside>
 
+<main>
 
-                <div class="info-grid">
+<section class="page-head">
 
-                    <div class="info-box">
-                        <span>NAME</span>
-                        <strong>สุพิชญา บุตรต๊ะ</strong>
-                    </div>
+  <p class="eyebrow">
+    PERSONAL DATABASE // 02
+  </p>
 
-                    <div class="info-box">
-                        <span>NICKNAME</span>
-                        <strong>แก้มหอม</strong>
-                    </div>
+  <h1>
+    GET TO <span>KNOW ME.</span>
+  </h1>
 
-                    <div class="info-box">
-                        <span>AGE</span>
-                        <strong>14 YEARS</strong>
-                    </div>
+  <p>
+    One diver. One story.
+    Many layers beneath the surface.
+  </p>
 
-                    <div class="info-box">
-                        <span>BIRTHDAY</span>
-                        <strong>18 NOV 2011</strong>
-                    </div>
+</section>
 
-                    <div class="info-box">
-                        <span>LOCATION</span>
-                        <strong>CHIANG MAI</strong>
-                    </div>
+<section class="profile-grid">
 
-                    <div class="info-box">
-                        <span>SCHOOL</span>
-                        <strong>CHOMTHONG</strong>
-                    </div>
+  <div class="photo-card tilt">
 
-                    <div class="info-box">
-                        <span>LEVEL</span>
-                        <strong>M.3 / 2</strong>
-                    </div>
+    <div class="scan"></div>
 
-                </div>
+    <img
+      src="images/GamRed.jpeg"
+      alt="สุพิชญา บุตร๊ะ"
+    >
 
-            </div>
+    <div class="photo-hud">
+      BIOMETRIC PROFILE<br>
+      <b>SUBJECT // GAMHOM</b>
+    </div>
 
-        </section>
+  </div>
 
+  <div class="panel reveal">
 
-        <section class="content-section">
+    <small>M.3 STUDENT</small>
 
-            <div class="section-heading">
-                <span>PROFILE DATA</span>
-                <h2>ABOUT ME</h2>
-            </div>
+    <h2>
+      สุพิชญา บุตรต๊ะ
+    </h2>
 
-            <div class="text-panel">
+    <p class="nickname">
+      “แก้มหอม”
+    </p>
 
-                <p>
-                    ฉันเป็นคนที่สนใจด้านศิลปะและงานสร้างสรรค์
-                    โดยเฉพาะการวาดรูปและการระบายสี
-                    ฉันชอบใช้จินตนาการเพื่อสร้างสิ่งใหม่ ๆ
-                    และอยากพัฒนาความสามารถของตัวเอง
-                    ให้ดีขึ้นเรื่อย ๆ
-                </p>
+    <div class="info-grid">
 
-            </div>
+      <div>
+        <small>AGE</small>
+        <b>14 YEARS</b>
+      </div>
 
-        </section>
+      <div>
+        <small>BIRTHDAY</small>
+        <b>18 NOV 2011</b>
+      </div>
 
-    </main>
+      <div>
+        <small>LOCATION</small>
+        <b>CHIANG MAI</b>
+      </div>
 
+      <div>
+        <small>SCHOOL</small>
+        <b>CHOMTHONG</b>
+      </div>
 
-    <footer class="site-footer">
-        <span>PROFILE // MY OCEAN</span>
-        <a href="index.html">← RETURN TO SURFACE</a>
-    </footer>
+      <div>
+        <small>LEVEL</small>
+        <b>M.3 / 2</b>
+      </div>
+
+      <div>
+        <small>INTEREST</small>
+        <b>VISUAL ART</b>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="panel about reveal">
+
+  <small>ABOUT THE SUBJECT</small>
+
+  <h2>
+    MY OCEAN, <span>MY SPACE.</span>
+  </h2>
+
+  <p>
+    ฉันสนใจศิลปะและงานด้านภาพ
+    ชอบวาดรูปและระบายสี
+    เพราะการสร้างภาพเป็นพื้นที่ที่ทำให้ได้ถ่ายทอด
+    ความคิดและจินตนาการของตัวเอง
+  </p>
+
+</section>
+
+</main>
+
+<footer>
+  PROFILE // MY OCEAN
+  <span>● DATA STREAM STABLE</span>
+</footer>
 
 </body>
 </html>
