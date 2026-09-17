@@ -1,456 +1,167 @@
 <!DOCTYPE html>
 <html lang="th">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>PROFILE // MY OCEAN</title>
 
-    <link rel="stylesheet"
-          href="style.css">
-
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-
 </head>
 
+<body class="inner-page">
 
-<body class="profile-page">
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
 
-    <div class="loader" id="loader">
-
-        <div class="loader-ring"></div>
-
-        <div class="loader-content">
-
-            <div class="loader-code">
-                AO-4500
-            </div>
-
-            <div class="loader-title">
-                LOADING PROFILE DATA
-            </div>
-
-            <div class="loader-progress">
-                <span></span>
-            </div>
-
-            <div class="loader-status">
-                ACCESSING PERSONAL DATABASE...
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="cursor-core"></div>
-    <div class="cursor-ring"></div>
-
-
-    <div class="ocean-environment">
-
-        <div class="water-surface"></div>
-
-        <div class="light-shafts">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
-        <div class="underwater-grid"></div>
-
+    <div class="ocean-bg">
+        <div class="light-rays"></div>
+        <div class="marine-snow"></div>
         <div class="deep-fog"></div>
-
-        <div class="marine-particles"
-             id="marineParticles"></div>
-
-        <div class="bubble-field"
-             id="bubbleField"></div>
-
-        <div class="bioluminescence"
-             id="bioluminescence"></div>
-
-        <div class="marine-life"
-             id="marineLife"></div>
-
-        <div class="coral-field">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
-        <div class="tech-grid"></div>
-        <div class="circuit-layer"></div>
-        <div class="scanline-layer"></div>
-
-        <div class="sonar-system">
-
-            <div class="sonar-ring sonar-ring-1"></div>
-            <div class="sonar-ring sonar-ring-2"></div>
-            <div class="sonar-ring sonar-ring-3"></div>
-
-            <div class="sonar-sweep"></div>
-
-        </div>
-
+        <div class="bubble-field"></div>
+        <div class="particle-field"></div>
+        <div class="bioluminescence"></div>
     </div>
 
+    <header class="site-header">
 
-    <header class="top-hud">
+        <a href="index.html" class="logo">
+            <span>MY</span>
+            <strong>OCEAN</strong>
+        </a>
 
-        <div class="brand-block">
-
-            <div class="brand-symbol">
-                ◉
-            </div>
-
-            <div>
-
-                <div class="brand-title">
-                    MY OCEAN
-                </div>
-
-                <div class="brand-subtitle">
-                    ABYSSAL INTERFACE // 04
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <nav class="main-navigation">
-
-            <a href="index.html"
-               class="nav-link">
-
-                <span>01</span>
-                HOME
-
-            </a>
-
-            <a href="profile.html"
-               class="nav-link active">
-
-                <span>02</span>
-                PROFILE
-
-            </a>
-
-            <a href="education.html"
-               class="nav-link">
-
-                <span>03</span>
-                EDUCATION
-
-            </a>
-
-            <a href="hobbies.html"
-               class="nav-link">
-
-                <span>04</span>
-                HOBBIES
-
-            </a>
-
-            <a href="contact.html"
-               class="nav-link">
-
-                <span>05</span>
-                CONTACT
-
-            </a>
-
+        <nav class="main-nav">
+            <a href="index.html">HOME</a>
+            <a href="profile.html" class="active">PROFILE</a>
+            <a href="education.html">EDUCATION</a>
+            <a href="hobbies.html">HOBBIES</a>
+            <a href="contact.html">CONTACT</a>
         </nav>
 
-
-        <button class="mode-button"
-                id="themeButton">
-
-            <span class="mode-icon">
-                ◐
-            </span>
-
-            <span class="mode-text">
-
-                <small>
-                    ENVIRONMENT
-                </small>
-
-                <strong>
-                    DEEP OCEAN
-                </strong>
-
-            </span>
-
+        <button id="themeButton" class="theme-button">
+            <span></span>
         </button>
 
     </header>
 
 
-    <div class="hud-corner hud-top-left">
+    <main class="page-main">
 
-        <span>
-            SYS.02
-        </span>
-
-        <span>
-            PERSONAL DATABASE
-        </span>
-
-        <span>
-            VERIFIED
-        </span>
-
-    </div>
-
-
-    <div class="hud-corner hud-top-right">
-
-        <span>
-            PROFILE
-        </span>
-
-        <span>
-            ID: AO-2011
-        </span>
-
-    </div>
-
-
-    <main class="inner-page">
-
-        <section class="page-hero reveal">
+        <section class="page-hero">
 
             <div class="eyebrow">
-
-                <span></span>
-
-                IDENTITY // PERSONAL DATA
-
+                ABYSSAL INTERFACE // 02
             </div>
 
             <h1>
-
                 GET TO
-                <br>
-
                 <span>KNOW ME.</span>
-
             </h1>
 
             <p>
-
-                Every explorer has a story.
-                This is mine.
-
+                A small profile from beneath the surface.
             </p>
 
         </section>
 
 
-        <section class="profile-layout">
+        <section class="profile-section">
 
+            <div class="profile-image-card tilt-card">
 
-            <div class="profile-image-panel reveal">
+                <div class="scan-line"></div>
 
-                <div class="image-frame">
+                <img
+                    src="images/GamRed.jpeg"
+                    alt="GamHom"
+                >
 
-                    <div class="frame-corner top-left"></div>
-                    <div class="frame-corner top-right"></div>
-                    <div class="frame-corner bottom-left"></div>
-                    <div class="frame-corner bottom-right"></div>
-
-                    <img src="images/GamRed.jpeg"
-                         alt="Supitchaya Butta">
-
-                    <div class="image-overlay">
-
-                        <span>
-                            SUBJECT
-                        </span>
-
-                        <strong>
-                            GAMHOM
-                        </strong>
-
-                    </div>
-
-                </div>
-
-                <div class="image-status">
-
-                    <span>
-                        VISUAL RECORD
-                    </span>
-
-                    <span>
-                        ● ONLINE
-                    </span>
-
+                <div class="image-label">
+                    <span>SUBJECT</span>
+                    <strong>GAMHOM</strong>
                 </div>
 
             </div>
 
 
-            <div class="profile-data reveal">
+            <div class="profile-info">
+
+                <div class="status-label">
+                    M.3 STUDENT
+                </div>
+
+                <h2>
+                    สุพิชญา บุตรต๊ะ
+                </h2>
+
+                <p class="nickname">
+                    GAMHOM
+                </p>
 
 
-                <div class="identity-header">
+                <div class="info-grid">
 
-                    <div>
-
-                        <span>
-                            FULL NAME
-                        </span>
-
-                        <h2>
-                            สุพิชญา บุตรต๊ะ
-                        </h2>
-
+                    <div class="info-box">
+                        <span>NAME</span>
+                        <strong>สุพิชญา บุตรต๊ะ</strong>
                     </div>
 
-                    <div class="status-badge">
-                        M.3 STUDENT
+                    <div class="info-box">
+                        <span>NICKNAME</span>
+                        <strong>แก้มหอม</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <span>AGE</span>
+                        <strong>14 YEARS</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <span>BIRTHDAY</span>
+                        <strong>18 NOV 2011</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <span>LOCATION</span>
+                        <strong>CHIANG MAI</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <span>SCHOOL</span>
+                        <strong>CHOMTHONG</strong>
+                    </div>
+
+                    <div class="info-box">
+                        <span>LEVEL</span>
+                        <strong>M.3 / 2</strong>
                     </div>
 
                 </div>
-
-
-                <div class="data-grid">
-
-
-                    <div class="info-box">
-
-                        <span>
-                            NICKNAME
-                        </span>
-
-                        <strong>
-                            แก้มหอม
-                        </strong>
-
-                    </div>
-
-
-                    <div class="info-box">
-
-                        <span>
-                            AGE
-                        </span>
-
-                        <strong>
-                            14 YEARS
-                        </strong>
-
-                    </div>
-
-
-                    <div class="info-box">
-
-                        <span>
-                            BIRTHDAY
-                        </span>
-
-                        <strong>
-                            18 NOV 2011
-                        </strong>
-
-                    </div>
-
-
-                    <div class="info-box">
-
-                        <span>
-                            LOCATION
-                        </span>
-
-                        <strong>
-                            CHIANG MAI
-                        </strong>
-
-                    </div>
-
-
-                    <div class="info-box">
-
-                        <span>
-                            SCHOOL
-                        </span>
-
-                        <strong>
-                            CHOMTHONG
-                        </strong>
-
-                    </div>
-
-
-                    <div class="info-box">
-
-                        <span>
-                            LEVEL
-                        </span>
-
-                        <strong>
-                            M.3 / 2
-                        </strong>
-
-                    </div>
-
-
-                </div>
-
-
-                <div class="about-panel">
-
-                    <div class="panel-label">
-                        ABOUT ME
-                    </div>
-
-                    <p>
-
-                        ฉันเป็นคนที่ชอบงานศิลปะ
-                        และงาน Visual Art โดยเฉพาะ
-                        การวาดรูปและการระบายสี
-
-                        <br><br>
-
-                        ศิลปะเป็นสิ่งที่ช่วยให้ฉัน
-                        สามารถถ่ายทอดความคิด
-                        และจินตนาการออกมา
-                        ในรูปแบบที่เป็นตัวของตัวเอง
-
-                    </p>
-
-                </div>
-
 
             </div>
 
         </section>
 
 
-        <section class="quote-section reveal">
+        <section class="content-section">
 
-            <div class="quote-line"></div>
+            <div class="section-heading">
+                <span>PROFILE DATA</span>
+                <h2>ABOUT ME</h2>
+            </div>
 
-            <blockquote>
-                “There is more to discover
-                beneath the surface.”
-            </blockquote>
+            <div class="text-panel">
 
-            <div class="quote-line"></div>
+                <p>
+                    ฉันเป็นคนที่สนใจด้านศิลปะและงานสร้างสรรค์
+                    โดยเฉพาะการวาดรูปและการระบายสี
+                    ฉันชอบใช้จินตนาการเพื่อสร้างสิ่งใหม่ ๆ
+                    และอยากพัฒนาความสามารถของตัวเอง
+                    ให้ดีขึ้นเรื่อย ๆ
+                </p>
+
+            </div>
 
         </section>
 
@@ -458,19 +169,8 @@
 
 
     <footer class="site-footer">
-
-        <div>
-            MY OCEAN // PROFILE
-        </div>
-
-        <div>
-            PERSONAL DATABASE
-        </div>
-
-        <div>
-            © 2026
-        </div>
-
+        <span>PROFILE // MY OCEAN</span>
+        <a href="index.html">← RETURN TO SURFACE</a>
     </footer>
 
 </body>
