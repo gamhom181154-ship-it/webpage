@@ -1,430 +1,382 @@
-"use strict";
+(() => {
 
+  const $ = (selector, root = document) =>
+    root.querySelector(selector);
 
-/* =========================
-   LOADER
-========================= */
+  const $$ = (selector, root = document) =>
+    [...root.querySelectorAll(selector)];
 
-window.addEventListener("load", () => {
+  const body = document.body;
+  const root = document.documentElement;
 
-    const loader = document.getElementById("loader");
+  const loader = $('.loader');
+  const pct = $('#loadPct');
+  const loadDepth = $('#loadDepth');
+  const status = $('#loadStatus');
 
-    if (loader) {
+  const statuses = [
+    'CALIBRATING SONAR...',
+    'MAPPING WATER COLUMN...',
+    'DETECTING BIOLOGICAL SIGNAL...',
+    'CHECKING PRESSURE SENSOR...',
+    'ESTABLISHING DEEP-SEA LINK...',
+    'SYSTEM ONLINE'
+  ];
+
+  let progress = 0;
+
+  const reduced =
+    matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* =========================
+     LOADING SCREEN
+  ========================= */
+
+  if (loader) {
+
+    const timer = setInterval(() => {
+
+      progress = Math.min(
+        100,
+        progress + (Math.random() * 11 + 5)
+      );
+
+      if (pct) {
+        pct.textContent =
+          String(Math.floor(progress)).padStart(3, '0') + '%';
+      }
+
+      if (loadDepth) {
+        loadDepth.textContent =
+          'DEPTH ' +
+          String(Math.floor(progress * 45))
+            .padStart(4, '0') +
+          'M';
+      }
+
+      if (status) {
+
+        status.textContent =
+          statuses[
+            Math.min(
+              statuses.length - 1,
+              Math.floor(progress / 18)
+            )
+          ];
+
+      }
+
+      if (progress >= 100) {
+
+        clearInterval(timer);
+
         setTimeout(() => {
-            loader.classList.add("hidden");
-        }, 800);
-    }
+          loader.classList.add('done');
+        }, reduced ? 50 : 500);
 
-});
+      }
 
+    }, reduced ? 20 : 90);
 
-/* =========================
-   CUSTOM CURSOR
-========================= */
+  }
 
-const cursor = document.querySelector(".cursor");
-const cursorDot = document.querySelector(".cursor-dot");
+  /* =========================
+     THEME
+  ========================= */
 
-let mouseX = window.innerWidth / 2;
-let mouseY = window.innerHeight / 2;
+  const saved =
+    localStorage.getItem('myOceanTheme');
 
-let cursorX = mouseX;
-let cursorY = mouseY;
+  if (saved === 'tech') {
+    body.classList.add('surface-mode');
+  }
 
-document.addEventListener("mousemove", event => {
+  const theme = $('#themeButton');
 
-    mouseX = event.clientX;
-    mouseY = event.clientY;
+  theme?.addEventListener('click', () => {
 
-    if (cursorDot) {
-        cursorDot.style.left = `${mouseX}px`;
-        cursorDot.style.top = `${mouseY}px`;
-    }
+    body.classList.toggle('surface-mode');
 
-});
-
-
-function animateCursor() {
-
-    cursorX += (mouseX - cursorX) * 0.15;
-    cursorY += (mouseY - cursorY) * 0.15;
-
-    if (cursor) {
-        cursor.style.left = `${cursorX}px`;
-        cursor.style.top = `${cursorY}px`;
-    }
-
-    requestAnimationFrame(animateCursor);
-}
-
-animateCursor();
-
-
-/* =========================
-   CURSOR INTERACTION
-========================= */
-
-document.querySelectorAll("a, button, .ocean-card, .hobby-card").forEach(element => {
-
-    element.addEventListener("mouseenter", () => {
-
-        if (!cursor) return;
-
-        cursor.style.width = "45px";
-        cursor.style.height = "45px";
-        cursor.style.borderColor = "rgba(98,234,255,.9)";
-
-    });
-
-    element.addEventListener("mouseleave", () => {
-
-        if (!cursor) return;
-
-        cursor.style.width = "28px";
-        cursor.style.height = "28px";
-        cursor.style.borderColor = "rgba(98,234,255,.55)";
-
-    });
-
-});
-
-
-/* =========================
-   MOUSE LIGHT
-========================= */
-
-document.addEventListener("mousemove", event => {
-
-    const x = (event.clientX / window.innerWidth) * 100;
-    const y = (event.clientY / window.innerHeight) * 100;
-
-    document.documentElement.style.setProperty(
-        "--mouse-x",
-        `${x}%`
+    localStorage.setItem(
+      'myOceanTheme',
+      body.classList.contains('surface-mode')
+        ? 'tech'
+        : 'ocean'
     );
 
-    document.documentElement.style.setProperty(
-        "--mouse-y",
-        `${y}%`
+  });
+
+  /* =========================
+     MOUSE
+  ========================= */
+
+  const cursor = $('.cursor');
+
+  let mx = innerWidth / 2;
+  let my = innerHeight / 2;
+
+  let cx = mx;
+  let cy = my;
+
+  addEventListener('pointermove', event => {
+
+    mx = event.clientX;
+    my = event.clientY;
+
+    root.style.setProperty(
+      '--mx',
+      mx + 'px'
     );
 
-});
+    root.style.setProperty(
+      '--my',
+      my + 'px'
+    );
 
+  });
 
-/* =========================
-   3D CARD TILT
-========================= */
+  if (cursor && !reduced) {
 
-document.querySelectorAll(".tilt-card").forEach(card => {
+    (function cursorLoop() {
 
-    card.addEventListener("mousemove", event => {
+      cx += (mx - cx) * .16;
+      cy += (my - cy) * .16;
 
-        const rect = card.getBoundingClientRect();
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+
+      requestAnimationFrame(cursorLoop);
+
+    })();
+
+  }
+  else if (cursor) {
+
+    cursor.style.display = 'none';
+
+  }
+
+  /* =========================
+     CURSOR HOVER
+  ========================= */
+
+  $$(
+    'a,button,.ocean-card,.hobby,.contact-card,.photo-card'
+  ).forEach(element => {
+
+    element.addEventListener(
+      'pointerenter',
+      () => cursor?.classList.add('hover')
+    );
+
+    element.addEventListener(
+      'pointerleave',
+      () => cursor?.classList.remove('hover')
+    );
+
+  });
+
+  /* =========================
+     CLICK / WATER PRESSURE
+  ========================= */
+
+  addEventListener('click', event => {
+
+    if (reduced) return;
+
+    const wave =
+      document.createElement('div');
+
+    wave.className = 'click-wave';
+
+    wave.style.left =
+      event.clientX + 'px';
+
+    wave.style.top =
+      event.clientY + 'px';
+
+    document.body.appendChild(wave);
+
+    setTimeout(() => {
+      wave.remove();
+    }, 900);
+
+  });
+
+  /* =========================
+     DEPTH TELEMETRY
+  ========================= */
+
+  const depth = $('#depthValue');
+  const pressure = $('#pressure');
+  const temp = $('#temp');
+  const track = $('.depth-track i');
+
+  function telemetry() {
+
+    const max = Math.max(
+      1,
+      document.documentElement.scrollHeight -
+      innerHeight
+    );
+
+    const p = Math.min(
+      1,
+      scrollY / max
+    );
+
+    const meters =
+      Math.round(p * 4500);
+
+    if (depth) {
+
+      depth.textContent =
+        String(meters).padStart(4, '0') +
+        'M';
+
+    }
+
+    if (track) {
+
+      track.style.width =
+        (p * 100) + '%';
+
+    }
+
+    if (pressure) {
+
+      pressure.textContent =
+        (1 + meters / 10).toFixed(1);
+
+    }
+
+    if (temp) {
+
+      temp.textContent =
+        Math.max(
+          -1,
+          24 - meters * .005
+        ).toFixed(1);
+
+    }
+
+    body.style.setProperty(
+      '--depth',
+      meters
+    );
+
+  }
+
+  addEventListener(
+    'scroll',
+    telemetry,
+    { passive:true }
+  );
+
+  telemetry();
+
+  /* =========================
+     REVEAL
+  ========================= */
+
+  const observer =
+    new IntersectionObserver(
+      entries => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+          }
+
+        });
+
+      },
+      {
+        threshold:.12
+      }
+    );
+
+  $$('.reveal').forEach(element => {
+    observer.observe(element);
+  });
+
+  /* =========================
+     3D TILT
+  ========================= */
+
+  $$('.tilt').forEach(card => {
+
+    card.addEventListener(
+      'pointermove',
+      event => {
+
+        if (reduced) return;
+
+        const rect =
+          card.getBoundingClientRect();
 
         const x =
-            event.clientX -
-            rect.left -
-            rect.width / 2;
+          (event.clientX - rect.left) /
+          rect.width - .5;
 
         const y =
-            event.clientY -
-            rect.top -
-            rect.height / 2;
-
-        const rotateX =
-            -(y / rect.height) * 5;
-
-        const rotateY =
-            (x / rect.width) * 5;
+          (event.clientY - rect.top) /
+          rect.height - .5;
 
         card.style.transform =
-            `perspective(800px)
-             rotateX(${rotateX}deg)
-             rotateY(${rotateY}deg)
-             translateY(-4px)`;
+          `perspective(800px)
+           rotateX(${-y * 6}deg)
+           rotateY(${x * 7}deg)
+           translateY(-4px)`;
 
-    });
-
-
-    card.addEventListener("mouseleave", () => {
-
-        card.style.transform =
-            "perspective(800px) rotateX(0) rotateY(0)";
-
-    });
-
-});
-
-
-/* =========================
-   THEME SWITCH
-========================= */
-
-const themeButton =
-    document.getElementById("themeButton");
-
-const savedTheme =
-    localStorage.getItem("myOceanTheme");
-
-if (savedTheme === "surface") {
-    document.body.classList.add("surface-mode");
-}
-
-
-if (themeButton) {
-
-    themeButton.addEventListener("click", () => {
-
-        document.body.classList.toggle("surface-mode");
-
-        const isSurface =
-            document.body.classList.contains("surface-mode");
-
-        localStorage.setItem(
-            "myOceanTheme",
-            isSurface ? "surface" : "abyss"
-        );
-
-    });
-
-}
-
-
-/* =========================
-   DEPTH TELEMETRY
-========================= */
-
-const depthValue =
-    document.getElementById("depthValue");
-
-const statusValue =
-    document.getElementById("statusValue");
-
-function updateDepth() {
-
-    if (!depthValue) return;
-
-    const maxScroll =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
-
-    if (maxScroll <= 0) {
-
-        depthValue.textContent = "0000M";
-
-        if (statusValue) {
-            statusValue.textContent = "EXPLORING";
-        }
-
-        return;
-    }
-
-    const progress =
-        Math.min(
-            Math.max(window.scrollY / maxScroll, 0),
-            1
-        );
-
-    const depth =
-        Math.round(progress * 4500);
-
-    depthValue.textContent =
-        `${String(depth).padStart(4, "0")}M`;
-
-    if (statusValue) {
-
-        if (depth < 1000) {
-            statusValue.textContent = "SURFACE";
-        } else if (depth < 2500) {
-            statusValue.textContent = "DESCENDING";
-        } else if (depth < 4000) {
-            statusValue.textContent = "ABYSS";
-        } else {
-            statusValue.textContent = "DEEP ABYSS";
-        }
-
-    }
-
-}
-
-window.addEventListener(
-    "scroll",
-    updateDepth,
-    { passive: true }
-);
-
-window.addEventListener(
-    "resize",
-    updateDepth
-);
-
-updateDepth();
-
-
-/* =========================
-   REVEAL ON SCROLL
-========================= */
-
-const revealElements =
-    document.querySelectorAll(
-        ".ocean-card, .hobby-card, .stat-card, .timeline-item, .profile-section, .contact-console"
+      }
     );
 
-const revealObserver =
-    new IntersectionObserver(
-        entries => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform =
-                        "translateY(0)";
-
-                    revealObserver.unobserve(
-                        entry.target
-                    );
-
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.12
-        }
+    card.addEventListener(
+      'pointerleave',
+      () => {
+        card.style.transform = '';
+      }
     );
 
+  });
 
-revealElements.forEach(element => {
+  /* =========================
+     PAGE TRANSITION
+  ========================= */
 
-    element.style.opacity = "0";
+  $$('a').forEach(link => {
 
-    element.style.transform =
-        "translateY(25px)";
-
-    element.style.transition =
-        "opacity .7s ease, transform .7s ease";
-
-    revealObserver.observe(element);
-
-});
-
-
-/* =========================
-   CLICK RIPPLE
-========================= */
-
-document.addEventListener("click", event => {
-
-    const ripple =
-        document.createElement("div");
-
-    ripple.style.position = "fixed";
-    ripple.style.left = `${event.clientX}px`;
-    ripple.style.top = `${event.clientY}px`;
-
-    ripple.style.width = "10px";
-    ripple.style.height = "10px";
-
-    ripple.style.border =
-        "1px solid rgba(98,234,255,.7)";
-
-    ripple.style.borderRadius = "50%";
-
-    ripple.style.pointerEvents = "none";
-    ripple.style.zIndex = "998";
-
-    ripple.style.transform =
-        "translate(-50%, -50%)";
-
-    document.body.appendChild(ripple);
-
-    ripple.animate(
-        [
-            {
-                width: "10px",
-                height: "10px",
-                opacity: 0.8
-            },
-            {
-                width: "180px",
-                height: "180px",
-                opacity: 0
-            }
-        ],
-        {
-            duration: 800,
-            easing: "cubic-bezier(.2,.7,.2,1)"
-        }
-    ).onfinish = () => {
-        ripple.remove();
-    };
-
-});
-
-
-/* =========================
-   OCEAN EASTER EGG
-========================= */
-
-let typed = "";
-
-document.addEventListener("keydown", event => {
-
-    typed += event.key.toLowerCase();
-
-    if (typed.length > 20) {
-        typed = typed.slice(-20);
-    }
-
-    if (typed.includes("ocean")) {
-
-        document.body.classList.add("ocean-pulse");
-
-        setTimeout(() => {
-            document.body.classList.remove(
-                "ocean-pulse"
-            );
-        }, 1200);
-
-        typed = "";
-
-    }
-
-});
-
-
-/* =========================
-   PAGE TRANSITION
-========================= */
-
-document.querySelectorAll("a").forEach(link => {
-
-    const href = link.getAttribute("href");
+    const href =
+      link.getAttribute('href');
 
     if (
-        !href ||
-        href.startsWith("#") ||
-        href.startsWith("mailto:") ||
-        href.startsWith("http")
+      !href ||
+      href.startsWith('#') ||
+      href.startsWith('mailto:') ||
+      link.target === '_blank'
     ) {
-        return;
+      return;
     }
 
-    link.addEventListener("click", event => {
+    link.addEventListener(
+      'click',
+      event => {
+
+        if (reduced) return;
 
         event.preventDefault();
 
-        document.body.classList.add(
-            "page-leaving"
-        );
+        loader?.classList.remove('done');
 
         setTimeout(() => {
-            window.location.href = href;
-        }, 180);
+          location.href = href;
+        }, 420);
 
-    });
+      }
+    );
 
-});
+  });
+
+})();
